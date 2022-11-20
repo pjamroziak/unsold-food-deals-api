@@ -1,4 +1,8 @@
 name: Publish to Docker
+on:
+  push:
+    branches:
+      - fix/publish-workflow
 
 jobs:
   publish:
