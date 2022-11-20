@@ -1,8 +1,5 @@
 name: Publish to Docker
-on:
-  push:
-    branches:
-      - main
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -10,10 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       # Add your test steps here if needed...
       - name: Build container
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v3
         with:
-          username: pjamroziak
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: pjamroziak/unsold-food-deals-api
-          tag_with_sha: true
+          push: true
+          tags: pjamroziak/unsold-food-deals-api:latest
