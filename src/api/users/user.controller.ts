@@ -1,42 +1,45 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
   Post,
-  Put,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { User, Notification } from './user.entity';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 
 @Controller('users')
-@UsePipes(new ValidationPipe({ transform: true }))
+@UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
 export class UserController {
-  constructor(private readonly service: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
-  @Get('/')
-  async getAll(): Promise<User[]> {
-    return await this.service.getAll();
+  @Get()
+  async getAll() {
+    return this.userService.findAll();
   }
 
-  @Post('/')
-  async create(@Body() user: User) {
-    return await this.service.create(user);
+  @Get(':id')
+  async getById(@Param('id') id: number) {
+    return this.userService.findById(id);
   }
 
-  @Patch('/:id')
-  async update(@Param('id') id: string, @Body() user: Partial<User>) {
-    return await this.service.update(id, user);
+  @Post()
+  async create(@Body() userCreateDto: CreateUserDto) {
+    await this.userService.create(userCreateDto);
   }
 
-  @Put('/:id/notifications')
-  async addNotifications(
-    @Param('id') id: string,
-    @Body() notifications: Notification[],
-  ) {
-    return await this.service.update(id, { notifications });
+  @Patch(':id')
+  async update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(id, updateUserDto);
+  }
+
+  @Delete(':id')
+  async remove(@Param('id') id: number) {
+    await this.userService.remove(id);
   }
 }
