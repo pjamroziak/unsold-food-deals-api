@@ -10,9 +10,12 @@ export class Offer {
   package_id: number;
 
   @Property()
-  name: string;
+  restaurant_id: number;
 
   @Property()
+  name: string;
+
+  @Property({ columnType: 'text' })
   description: string;
 
   @Property()

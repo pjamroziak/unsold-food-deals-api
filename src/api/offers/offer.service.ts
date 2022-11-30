@@ -18,6 +18,10 @@ export class OfferService {
     return this.offerRepository.findAll();
   }
 
+  async findById(id: number) {
+    return this.offerRepository.findOneOrFail(id);
+  }
+
   async update(id: number, offerUpdateDto: UpdateOfferDto) {
     const offer = await this.offerRepository.findOneOrFail({ id });
 

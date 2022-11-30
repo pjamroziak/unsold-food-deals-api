@@ -1,9 +1,19 @@
-import { IsDate, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsDate,
+  IsDateString,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class UpdateOfferDto {
   @IsNumber()
   @IsOptional()
   package_id: number;
+
+  @IsNumber()
+  @IsOptional()
+  restaurant_id: number;
 
   @IsString()
   @IsOptional()
@@ -29,11 +39,11 @@ export class UpdateOfferDto {
   @IsOptional()
   new_price: number;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
   opened_at: Date;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
   closed_at: Date;
 }

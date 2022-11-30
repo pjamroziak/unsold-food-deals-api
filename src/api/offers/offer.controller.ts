@@ -20,6 +20,11 @@ export class OfferController {
     return this.offerService.findAll();
   }
 
+  @Get(':id')
+  async getById(@Param('id') id: number) {
+    return this.offerService.findById(id);
+  }
+
   @Patch(':id')
   async update(
     @Param('id') id: number,

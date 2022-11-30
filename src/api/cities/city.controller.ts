@@ -14,25 +14,25 @@ import { CityService } from './city.service';
 @Controller('cities')
 @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
 export class CityController {
-  constructor(private readonly locationsService: CityService) {}
+  constructor(private readonly cityService: CityService) {}
 
   @Get()
   async getAll() {
-    return this.locationsService.findAll();
+    return this.cityService.findAll();
   }
 
   @Get(':id')
   async getBydId(@Param('id') id: number) {
-    return this.locationsService.findById(id);
+    return this.cityService.findById(id);
   }
 
   @Post()
   async create(@Body() body: CreateCityDto) {
-    return this.locationsService.create(body);
+    return this.cityService.create(body);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: number) {
-    await this.locationsService.remove(id);
+    await this.cityService.remove(id);
   }
 }

@@ -15,7 +15,7 @@ export class CityOffersService {
   ) {}
 
   async findAll(cityId: number) {
-    return this.offerRepository.findOneOrFail({ city: { id: cityId } });
+    return this.offerRepository.find({ city: { id: cityId } });
   }
 
   async create(cityId: number, offerCreateDto: CreateOfferDto) {
