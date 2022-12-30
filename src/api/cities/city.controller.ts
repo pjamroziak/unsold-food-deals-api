@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { CreateCityDto } from './dto/create-city.dto';
 import { CityService } from './city.service';
+import { FindClosestCityDto } from './dto/find-closest-city.dto';
 
 @Controller('cities')
 @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
@@ -29,6 +30,11 @@ export class CityController {
   @Post()
   async create(@Body() body: CreateCityDto) {
     return this.cityService.create(body);
+  }
+
+  @Post('/find')
+  async findClosestCity(@Body() body: FindClosestCityDto) {
+    return this.cityService.findClosestCity(body);
   }
 
   @Delete(':id')

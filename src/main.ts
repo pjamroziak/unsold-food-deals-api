@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
-import { Logger } from 'nestjs-pino';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
@@ -16,7 +15,6 @@ async function bootstrap() {
     { bufferLogs: true },
   );
 
-  app.useLogger(app.get(Logger));
   app.setGlobalPrefix(globalPrefix);
   await app.listen(port, '0.0.0.0');
 }

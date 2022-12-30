@@ -7,10 +7,12 @@ import { CityService } from './city.service';
 import { Offer } from '@app/entities/offer.entity';
 import { CityOffersService } from './city-offers.service';
 import { CityOffersController } from './city-offers.controller';
+import { CityFinderService } from './city-finder.service';
 
 @Module({
   imports: [MikroOrmModule.forFeature({ entities: [User, City, Offer] })],
   controllers: [CityController, CityOffersController],
-  providers: [CityService, CityOffersService],
+  providers: [CityService, CityOffersService, CityFinderService],
+  exports: [CityFinderService],
 })
 export class CityModule {}
