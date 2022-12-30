@@ -1,12 +1,2 @@
-.PHONY: test
-
-run:
-	pnpm run build
-	pnpm run start
-
-debug:
-	pnpm run build
-	pnpm run start:debug
-
-test:
-	pnpm run test
+postgres-run:
+	docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
