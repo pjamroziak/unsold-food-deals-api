@@ -1,9 +1,8 @@
-import { Cordinates } from '@app/common/types';
 import { City } from '@app/entities/city.entity';
 import { User } from '@app/entities/user.entity';
-import { EntityRepository, MikroORM } from '@mikro-orm/core';
+import { EntityRepository } from '@mikro-orm/core';
 import { InjectRepository } from '@mikro-orm/nestjs';
-import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CityFinderService } from '../cities/city-finder.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';

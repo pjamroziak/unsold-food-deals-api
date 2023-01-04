@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '../../entities/user.entity';
 import { CreateCityDto } from './dto/create-city.dto';
 import { City } from '../../entities/city.entity';
 import { EntityRepository } from '@mikro-orm/core';
