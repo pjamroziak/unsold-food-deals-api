@@ -1,6 +1,5 @@
 import { Cordinates } from '@app/common/types';
 import { City } from '@app/entities/city.entity';
-import { User } from '@app/entities/user.entity';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
