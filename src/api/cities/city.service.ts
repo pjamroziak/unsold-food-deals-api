@@ -16,7 +16,7 @@ export class CityService {
 
   async findAll() {
     return this.cityRepository.findAll({
-      fields: ['*', 'users.id'],
+      fields: ['*', 'users.id', 'offers'],
     });
   }
 
